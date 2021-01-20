@@ -25,12 +25,12 @@ from dotenv import load_dotenv
 load_dotenv()
 import os
 
-SECRET_KEY = "$sv^l)cddc9%g_^!&+&@0b5e14^mca^dg8fsq!g3@vex#njve$"
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["https://noirjam.herokuapp.com"]
 
 
 # Application definition
