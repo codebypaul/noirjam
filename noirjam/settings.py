@@ -38,6 +38,7 @@ ALLOWED_HOSTS = ["noirjam.herokuapp.com", "localhost"]
 INSTALLED_APPS = [
     "users.apps.UsersConfig",
     "blog.apps.BlogConfig",
+    "store.apps.StoreConfig",
     "crispy_forms",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -127,6 +128,7 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = "/static/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static/")]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"

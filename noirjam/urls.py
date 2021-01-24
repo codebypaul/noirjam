@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("social/", include("blog.urls")),
+    path("shop/", include("store.urls")),
     path("register/", user_views.register, name="register"),
     path(
         "",
@@ -61,7 +62,7 @@ urlpatterns = [
         name="password_reset_complete",
     ),
     path("profile/", user_views.profile, name="profile"),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

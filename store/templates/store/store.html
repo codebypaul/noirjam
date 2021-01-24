@@ -1,0 +1,23 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<div class="row py-5">
+    {% for product in products %}
+    <div class="col-lg-4">
+        <div class="card mb-5">
+            <!-- <img src="{%  static 'images/store_placeholder.png' %}" alt="" class="card-img"> -->
+            <div class="card-body">
+                <h6><strong>{{ product.name }}</strong></h6>
+                <hr>
+                <div class='d-flex justify-content-between'>
+                    <button data-product='{{product.id}}' data-action="add" class="btn btn-outline-secondary update-cart add-btn">Add To Cart</button>
+                    <h4 class="item-card-price">${{ product.price|floatformat:2 }}</h4>
+                    <a href='#' class="btn btn-outline-success">View Item</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
