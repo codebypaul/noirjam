@@ -6,9 +6,9 @@
 body {
   background: rgba(200, 200, 200, 0.2);
 }
-.navbar {
+.page-navbar {
   background: rgb(138, 106, 175);
-  height: 4rem;
+  min-height: 4rem;
 }
 .rounded-circle {
   border-radius: 50%;
@@ -50,7 +50,9 @@ a {
   text-align: center;
   border-radius: 50%;
 }
-
+.cart {
+  float: right;
+}
 /*------store-------*/
 /* .item-card-price {
   display: inline;
@@ -102,4 +104,15 @@ a {
 }
 #payment-options.hidden {
   visibility: hidden;
+}
+
+/*----- login or guest-----*/
+.login-or-guest {
+  margin-top: 20vh;
+}
+
+@media screen and (min-width: 1000px) {
+  .cart {
+    float: right;
+  }
 }

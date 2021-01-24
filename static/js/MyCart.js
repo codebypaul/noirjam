@@ -1,7 +1,6 @@
 const updateBtns = document.getElementsByClassName('update-cart')
 
 for (i = 0; i < updateBtns.length; i++) {
-    
     updateBtns[i].addEventListener('click',function(e){
         console.log('clicked');
         e.preventDefault()
@@ -41,7 +40,7 @@ function addCookieItem(productId,action) {
 function updateUserOrder(productId,action){
     console.log('User is authenticated, sending data...');
 
-    const url = '/update_item/'
+    const url = '/shop/update_item/'
 
     fetch(url,{
         method:'POST',
