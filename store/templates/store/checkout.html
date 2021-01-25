@@ -26,8 +26,7 @@
                             <path d="M2 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
                         </svg>
                     </h5>
-                    <button class='btn btn-outline-primary' id='make-payment'>PayPal</button>
-                    <button></button>
+                    <div class="paypal-buttons hidden" id="paypal-button-container"></div>
                 </div>
             </div>
 
@@ -61,9 +60,12 @@
 
     </div>
 </div>
+
+<script src="https://www.paypal.com/sdk/js?client-id=ATg71bunjDvShCekKWfJstehAegPKBAmzjgG30RvgFP33SCJ61b_SzKJIsrm5PUDvXj8haNS7XFeZIa9&currency=USD&disable-funding=paylater"></script>
+
 <script type='text/javascript'>
-    let shipping = '{{order.shipping}}';
-    let total = '{{order.get_cart_total|floatformat:2}}'
+    let shipping = '{{order.shipping}}'
+    
     if (shipping == 'False'){
         document.getElementById('shipping-info').innerHTML = '';
     }
@@ -80,7 +82,7 @@
     }
 
     const form = document.getElementById('form');
-    console.log(form)
+
     form.addEventListener('submit',function(e){
         e.preventDefault();
         console.log('FormSubmitted...');
@@ -88,9 +90,9 @@
         document.getElementById('payment-options').classList.remove('hidden');
     })
 
-    document.getElementById('make-payment').addEventListener('click',(e)=>{
-        submitFormData()
-    })
+    //document.getElementById('make-payment').addEventListener('click',(e)=>{
+    //    submitFormData()
+    // })
     
     function submitFormData(){
         console.log('Payment button clicked')
@@ -115,22 +117,58 @@
             userFormData.name = form.name.value
             userFormData.email = form.email.value
         }
-    }
-    const url = "/process_order/"
-    fetch(url, {
-        method:'POST',
-        "headers":{
-            'Content-Type':'application/json',
-            'X-CSRFToken':csrftoken
-        },
-        body:JSON.strigify({'form':userFormData,'shipping':shippingInfo})
+        const url = "/shop/process_order/"
+        fetch(url, {
+            method:'POST',
+            "headers":{
+                'Content-Type':'application/json',
+                'X-CSRFToken':csrftoken
+            },
+            body:JSON.stringify({'form':userFormData,'shipping':shippingInfo})
+        })
         .then(res=> res.json())
         .then(data=>{
             console.log('Success:',data)
             alert('Transaction completed')
+
+            cart = {}
+            document.cookie = 'cart=' +JSON.stringify(cart) + ";domain=;path=/"
+
             window.location.href = "{% url 'store' %}"
         })
-    })
+    }
+    
 </script>
-<script src="{% static 'js/Checkout.js' %}"></script>
+
+
+
+<script>
+    let total = '{{order.get_cart_total}}'
+    // Render the PayPal button into #paypal-button-container
+    paypal.Buttons({
+        style : {
+            color:'blue',
+            
+        },
+        // Set up the transaction
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: parseFloat(total).toFixed(2)
+                    }
+                }]
+            });
+        },
+
+        // Finalize the transaction
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                submitFormData()
+            });
+        }
+
+
+    }).render('#paypal-button-container');
+</script>
 {% endblock content %}
