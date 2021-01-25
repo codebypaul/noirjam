@@ -42,7 +42,7 @@ def store(request):
         # "test_data": "test_data",
     }
     print(context)
-    return render(request, "store/store.html", context)
+    return render(request, "store/store.html")
 
 
 def updateItem(request):
