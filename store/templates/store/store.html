@@ -2,6 +2,9 @@
 {% load static %}
 {% block content %}
 <div class="row py-5">
+    {% if products %}
+    <h1>There are products</h1>
+    {% endif %}
     {% for product in products %}
     <div class="col-lg-4">
         <div class="card mb-5">
