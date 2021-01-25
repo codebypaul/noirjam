@@ -106,3 +106,7 @@ def createOrGuest(request):
 
     context = {"cartItems": cartItems}
     return render(request, "store/create_or_guest.html", context)
+
+
+def testRoute(request):
+    return render(request, "store/test.html")
