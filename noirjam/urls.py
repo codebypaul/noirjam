@@ -17,11 +17,15 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from users import views as user_views
+
+# from store import views as store_views
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    # path("shop/", store_views.store, name='store'),
+    # path("shop/", store_views.cart, name='cart'),
     path("shop/", include("store.urls")),
     path("social/", include("blog.urls")),
     path("register/", user_views.register, name="register"),

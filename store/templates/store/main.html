@@ -64,7 +64,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav w-100">
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="{% url 'store' %}">Products</a>
         </li>
@@ -80,7 +80,7 @@
           <a href="{% url 'login' %}" class="nav-link">Login</a>
         </li>
         {% endif %}
-        <li class="nav-item cart">
+        <li class="nav-item cart ml-auto">
           <a href="{% url 'cart' %}">
             <div class="cart-area">
                 <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" fill="white" class="bi bi-cart3" viewBox="0 0 16 16">

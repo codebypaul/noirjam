@@ -51,7 +51,8 @@ a {
   border-radius: 50%;
 }
 .cart {
-  float: right;
+  align-self: center;
+  justify-self: flex-end;
 }
 /*------store-------*/
 /* .item-card-price {
