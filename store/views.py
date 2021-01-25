@@ -34,9 +34,9 @@ def store(request):
     # order = data["order"]
     # cartItems = data["cartItems"]
 
-    # products = Product.objects.all()
+    products = Product.objects.all()
     context = {
-        # "products": products,
+        "products": products,
         # "cartItems": cartItems,
         "test_data": "test_data",
     }  #
