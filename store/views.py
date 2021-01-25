@@ -34,8 +34,8 @@ def store(request):
     # order = data["order"]
     # cartItems = data["cartItems"]
 
-    # products = Product.objects.all()
-    # context = {"products": products, "cartItems": cartItems}
+    products = Product.objects.all()
+    context = {"products": products}  # , "cartItems": cartItems
     return render(request, "store/store.html")  # , context
 
 
