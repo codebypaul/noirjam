@@ -37,12 +37,12 @@ def store(request):
     products = Product.objects.all()
 
     context = {
-        "products": products,
+        # "products": products,
         # "cartItems": cartItems,
         # "test_data": "test_data",
     }
     print(context)
-    return render(request, "store/store.html")
+    return render(request, "store/store.html", context)
 
 
 def updateItem(request):
