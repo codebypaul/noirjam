@@ -28,20 +28,21 @@ def checkout(request):
 
 
 def store(request):
-    # data = cartData(request)
+    data = cartData(request)
 
-    # items = data["items"]
-    # order = data["order"]
-    # cartItems = data["cartItems"]
+    items = data["items"]
+    order = data["order"]
+    cartItems = data["cartItems"]
 
     products = Product.objects.all()
-    print(products)
+
     context = {
         "products": products,
-        # "cartItems": cartItems,
+        "cartItems": cartItems,
         "test_data": "test_data",
-    }  #
-    return render(request, "store/store.html", context)  #
+    }
+    print(context)
+    return render(request, "store/store.html", context)
 
 
 def updateItem(request):
