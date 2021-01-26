@@ -1,14 +1,12 @@
 {% extends 'store/main.html' %}
+{% include 'store/main.html' %}
 {% load static %}
 {% block content %}
 <div class="row py-5">
-    {% if products %}
-    <h1>There are products</h1>
-    {% endif %}
     {% for product in products %}
     <div class="col-lg-4">
         <div class="card mb-5">
-            <!-- <img src="{%  static 'images/store_placeholder.png' %}" alt="" class="card-img"> -->
+            <img src="{%  static 'images/store_placeholder.png' %}" alt="" class="card-img">
             <div class="card-body">
                 <h6><strong>{{ product.name }}</strong></h6>
                 <hr>

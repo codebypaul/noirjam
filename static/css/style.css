@@ -37,7 +37,7 @@ a {
 /*------ navbar ------*/
 .cart-area {
   position: relative;
-  margin: 0 1.5rem;
+  margin-right: 1.5rem;
 }
 #cart-total {
   background: red;
@@ -106,14 +106,30 @@ a {
 #payment-options.hidden {
   visibility: hidden;
 }
-
+.paypal-buttons.hidden {
+  visibility: hidden;
+}
 /*----- login or guest-----*/
 .login-or-guest {
   margin-top: 20vh;
 }
 
-@media screen and (min-width: 1000px) {
-  .cart {
-    float: right;
+@media screen and (max-width: 989px) {
+  .cart-area {
+    width: 2.5rem;
+    margin-top: 3px;
+    margin-left: 0.5rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .nav-items-list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .left-nav-links {
+    display: flex;
   }
 }

@@ -38,9 +38,8 @@ def store(request):
     context = {
         "products": products,
         "cartItems": cartItems,
-        "test_data": "test_data",
     }
-    print(context)
+
     return render(request, "store/store.html", context)
 
 
