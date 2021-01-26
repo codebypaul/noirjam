@@ -1,1 +1,1 @@
-web: gunicorn noirjam.wsgi
+web: gunicorn noirjam.wsgi --log-file-
