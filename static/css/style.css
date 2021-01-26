@@ -15,7 +15,6 @@ body {
   width: 5rem;
   height: 5rem;
 }
-
 .media {
   display: flex;
 }
@@ -35,6 +34,12 @@ a {
 }
 
 /*------ navbar ------*/
+.nav-logo {
+  width: 4rem;
+}
+.navbar-brand {
+  height: 100%;
+}
 .cart-area {
   position: relative;
   margin-right: 1.5rem;
@@ -116,7 +121,7 @@ a {
 
 @media screen and (max-width: 989px) {
   .cart-area {
-    width: 2.5rem;
+    width: 2.75rem;
     margin-top: 3px;
     margin-left: 0.5rem;
   }

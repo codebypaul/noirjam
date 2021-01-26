@@ -12,7 +12,7 @@ from .models import Post
 
 
 def home(request):
-    return render(request, "blog/home.html", {"title": "Blog Site"})
+    return render(request, "blog/home.html")
 
 
 def blog(request):
