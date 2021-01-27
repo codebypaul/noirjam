@@ -3,7 +3,7 @@
 {% for post in posts %}
     <div class="card mb-5 p-5">
         <div class="media">
-            <img src="{{ user.profile.image.url }}" alt="" class="account-img rounded-circle mr-3">
+            <img src="{{ post.author.profile.image.url }}" alt="" class="account-img rounded-circle mr-3">
             <div class="media-body ml-3">
                 <p><a href="{% url 'user-posts' post.author.username%}" class="username">{{ post.author }}</a> on {{ post.date_posted|date:'h:i F d, Y' }}</p>
                 <hr>
