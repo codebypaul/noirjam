@@ -9,12 +9,14 @@ from django.views.generic import (
     DeleteView,
 )
 from .models import Post
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
     return render(request, "blog/home.html")
 
 
+@login_required
 def blog(request):
     context = {"posts": Post.objects.all()}
     return render(request, "blog/blog.html", context)
